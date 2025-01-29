@@ -137,22 +137,20 @@ export default function Page() {
           </ImageBackground>
           <View className="flex flex-col items-center justify-center p-4">
             <CustomButton
-              className="mb-3 w-full rounded-xl"
+              className="mb-3 w-full rounded-full"
               onPress={handleAdjustDuration}
               title="Adjust duration"
             />
             <CustomButton
-              className="mb-3 w-full rounded-xl"
+              className="mb-3 w-full rounded-full"
               onPress={toggleMeditationSessionStatus}
-              title={isMeditating ? "pause" : "Start meditation"}
+              title={isMeditating ? "pause" : "Play"}
             />
-            {isMeditating && (
-              <CustomButton
-                className="mb-3 w-full rounded-xl"
-                onPress={handleReset}
-                title="reset"
-              />
-            )}
+            <CustomButton
+              className="mb-3 w-full rounded-full"
+              onPress={handleReset}
+              title="reset"
+            />
           </View>
         </View>
       </View>

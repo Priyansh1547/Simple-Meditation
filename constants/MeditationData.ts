@@ -14,9 +14,9 @@ export const MEDITATION_DATA: MeditationType[] = [
   },
   {
     id: 2,
-    title: "Beach",
-    image: "beach.png",
-    audio: "beach.mp3",
+    title: "River",
+    image: "river.jpg",
+    audio: "river.mp3",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export const MEDITATION_DATA: MeditationType[] = [
 
 export const AUDIO_FILES: { [key: string]: any } = {
   "mountain.mp3": require("@/assets/audio/mountain.mp3"),
-  "beach.mp3": require("@/assets/audio/beach.mp3"),
+  "river.mp3": require("@/assets/audio/river.mp3"),
   "night-sky.mp3": require("@/assets/audio/night-sky.mp3"),
   "sunrise.mp3": require("@/assets/audio/sunrise.mp3"),
 };

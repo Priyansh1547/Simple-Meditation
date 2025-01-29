@@ -27,22 +27,22 @@ const AdjustMeditationDuration = () => {
           <View className="flex flex-col items-center justify-center px-2">
             <CustomButton
               title="3 minutes"
-              className="mb-3 w-full rounded-xl"
+              className="mb-3 w-full rounded-full"
               onPress={() => handlePress(3 * 60)}
             />
             <CustomButton
               title="5 minutes"
-              className="mb-3 w-full rounded-xl"
+              className="mb-3 w-full rounded-full"
               onPress={() => handlePress(5 * 60)}
             />
             <CustomButton
               title="10 minutes"
-              className="mb-3 w-full rounded-xl"
+              className="mb-3 w-full rounded-full"
               onPress={() => handlePress(10 * 60)}
             />
             <CustomButton
               title="15 minutes"
-              className="mb-3 w-full rounded-xl"
+              className="mb-3 w-full rounded-full"
               onPress={() => {
                 handlePress(15 * 60);
               }}
