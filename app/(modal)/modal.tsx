@@ -10,7 +10,6 @@ const AdjustMeditationDuration = () => {
   const handlePress = (duration: number) => {
     setDuration(duration);
     router.back();
-    console.log(duration);
   };
 
   return (
