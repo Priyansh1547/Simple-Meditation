@@ -33,7 +33,7 @@ export default function Card({
         </ImageBackground>
         <View className="flex flex-col items-center justify-center p-3 bg-[#32333a]">
           <Button
-            className="rounded-2xl py-2 px-4 w-full text-center shadow-lg items-center justify-center h-12"
+            className="rounded-xl py-2 px-4 w-full text-center shadow-lg items-center justify-center h-12"
             onPress={onPress}
           >
             <Text className="text-base font-semibold">Start Meditation</Text>

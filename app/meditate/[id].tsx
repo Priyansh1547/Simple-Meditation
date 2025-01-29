@@ -9,10 +9,10 @@ import {
   SafeAreaView,
   Pressable,
 } from "react-native";
-import Button from "@/components/ui/button";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState, useEffect, useContext } from "react";
 import { Audio } from "expo-av";
+import CustomButton from "@/components/CustomButton";
 
 export default function Page() {
   const { id } = useLocalSearchParams();
@@ -41,6 +41,14 @@ export default function Page() {
       timerId = setTimeout(() => {
         setDuration(secondsRemaining - 1);
       }, 1000);
+
+      if (audioSound) {
+        audioSound.getStatusAsync().then((status) => {
+          if (status.isLoaded && status.didJustFinish) {
+            audioSound.replayAsync();
+          }
+        });
+      }
     }
 
     return () => {
@@ -50,7 +58,6 @@ export default function Page() {
 
   useEffect(() => {
     return () => {
-      setDuration(5 * 60);
       audioSound?.unloadAsync();
     };
   }, [audioSound]);
@@ -58,7 +65,10 @@ export default function Page() {
   const initializeSound = async () => {
     const audioFileName = MEDITATION_DATA[Number(id) - 1].audio;
 
-    const { sound } = await Audio.Sound.createAsync(AUDIO_FILES[audioFileName]);
+    const { sound } = await Audio.Sound.createAsync(
+      AUDIO_FILES[audioFileName],
+      { isLooping: true }
+    );
     setSound(sound);
     return sound;
   };
@@ -82,9 +92,7 @@ export default function Page() {
 
   async function toggleMeditationSessionStatus() {
     if (secondsRemaining === 0) setDuration(duration);
-
     setMeditating(!isMeditating);
-
     await togglePlayPause();
   }
   async function handleReset() {
@@ -128,27 +136,22 @@ export default function Page() {
             </View>
           </ImageBackground>
           <View className="flex flex-col items-center justify-center p-4">
-            <Button
-              className="rounded-2xl py-2 px-4 w-full text-center shadow-lg items-center justify-center h-12 mb-3"
+            <CustomButton
+              className="mb-3 w-full rounded-xl"
               onPress={handleAdjustDuration}
-            >
-              <Text className="text-base font-semibold">Adjust duration</Text>
-            </Button>
-            <Button
-              className="rounded-2xl py-2 px-4 w-full text-center shadow-lg items-center justify-center h-12 mb-3"
+              title="Adjust duration"
+            />
+            <CustomButton
+              className="mb-3 w-full rounded-xl"
               onPress={toggleMeditationSessionStatus}
-            >
-              <Text className="text-base font-semibold">
-                {isMeditating ? "Stop" : "Start Meditation"}
-              </Text>
-            </Button>
+              title={isMeditating ? "pause" : "Start meditation"}
+            />
             {isMeditating && (
-              <Button
-                className="rounded-2xl py-2 px-4 w-full text-center shadow-lg items-center justify-center h-12"
+              <CustomButton
+                className="mb-3 w-full rounded-xl"
                 onPress={handleReset}
-              >
-                <Text className="text-base font-semibold">Reset</Text>
-              </Button>
+                title="reset"
+              />
             )}
           </View>
         </View>
