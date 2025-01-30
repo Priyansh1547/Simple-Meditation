@@ -118,40 +118,42 @@ export default function Page() {
   const formattedTimeSeconds = String(secondsRemaining % 60).padStart(2, "0");
 
   return (
-    <SafeAreaView className="flex-1 bg-[#212122] px-4">
-      <Pressable onPress={() => router.back()} className="px-4 pt-2">
+    <SafeAreaView className="flex-1 bg-[#121214]">
+      <Pressable onPress={() => router.back()} className="p-6">
         <Ionicons name="arrow-back" size={24} color="white" />
       </Pressable>
-      <View className="flex-1 justify-center rounded-xl px-4">
-        <View className="h-[70%] rounded-3xl bg-[#2A2B31] overflow-hidden shadow-md">
+      <View className="flex-1 px-6 py-2">
+        <View className="h-[55%] rounded-3xl overflow-hidden mb-8">
           <ImageBackground
             source={meditationImages[Number(id) - 1]}
             resizeMode="cover"
-            className="flex-1 border-md mb-2"
+            className="flex-1"
           >
-            <View className="bg-black/30 flex-1 justify-end items-center">
-              <Text className="text-white text-2xl font-bold mb-10">
+            <View className="flex-1 bg-black/30 justify-end items-center pb-8">
+              <Text className="text-white/90 text-4xl font-semibold mb-2">
                 {formattedTimeMinutes}:{formattedTimeSeconds}
               </Text>
             </View>
           </ImageBackground>
-          <View className="flex flex-col items-center justify-center p-4">
-            <CustomButton
-              className="mb-3 w-full rounded-full"
-              onPress={handleAdjustDuration}
-              title="Adjust duration"
-            />
-            <CustomButton
-              className="mb-3 w-full rounded-full"
-              onPress={toggleMeditationSessionStatus}
-              title={isMeditating ? "pause" : "Play"}
-            />
-            <CustomButton
-              className="mb-3 w-full rounded-full"
-              onPress={handleReset}
-              title="reset"
-            />
-          </View>
+        </View>
+        <View className="flex-1 pb-8 space-y-3">
+          <CustomButton
+            onPress={handleAdjustDuration}
+            className="h-12 rounded-full mb-3"
+            title="Adjust duration"
+          />
+
+          <CustomButton
+            onPress={toggleMeditationSessionStatus}
+            className="h-12 rounded-full mb-3"
+            title={isMeditating ? "Pause" : "Play"}
+          />
+
+          <CustomButton
+            onPress={handleReset}
+            className="h-12 rounded-full mb-3"
+            title="Reset Timer"
+          />
         </View>
       </View>
     </SafeAreaView>

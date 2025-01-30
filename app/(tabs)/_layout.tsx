@@ -14,7 +14,7 @@ const Page = () => {
         tabBarActiveTintColor: "#917DF0",
         tabBarInactiveTintColor: "gray",
         tabBarStyle: {
-          backgroundColor: "#212122",
+          backgroundColor: "#121214",
           borderTopWidth: 0,
           borderLeftWidth: 0,
           borderRightWidth: 0,

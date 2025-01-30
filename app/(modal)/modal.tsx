@@ -13,7 +13,7 @@ const AdjustMeditationDuration = () => {
   };
 
   return (
-    <View className="flex-1 relative bg-[#212122] px-4">
+    <View className="flex-1 relative bg-[#121214] px-4">
       <Pressable onPress={() => router.back()} className="p-3">
         <Ionicons name="arrow-back" size={24} color="white" />
       </Pressable>
